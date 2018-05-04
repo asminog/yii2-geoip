@@ -1,7 +1,7 @@
 <?php
 
 
-namespace lysenkobv\GeoIP;
+namespace asminog\GeoIP;
 
 
 class Location {

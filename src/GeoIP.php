@@ -1,7 +1,7 @@
 <?php
 
 
-namespace lysenkobv\GeoIP;
+namespace asminog\GeoIP;
 
 use MaxMind\Db\Reader;
 use Yii;
@@ -36,7 +36,7 @@ class GeoIP extends Component {
      * @inheritDoc
      */
     public function init() {
-        $db = $this->dbPath ?: Yii::getAlias('@vendor/lysenkobv/maxmind-geolite2-database/city.mmdb');
+        $db = $this->dbPath ?: Yii::getAlias('@vendor/asminog/maxmind-geolite2-database/city.mmdb');
         
         $this->session = Yii::$app->session;
         $this->reader = new Reader($db);

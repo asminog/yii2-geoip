@@ -1,11 +1,11 @@
 <?php
 
 
-namespace lysenkobv\GeoIP;
+namespace asminog\GeoIP;
 
 /**
  * Class Result
- * @package lysenkobv\GeoIP
+ * @package asminog\GeoIP
  *
  * @property string|null city
  * @property string|null country
@@ -13,23 +13,31 @@ namespace lysenkobv\GeoIP;
  */
 class Result extends ResultBase {
     protected function getCity($data) {
-        $value = null;
 
-        if (isset($data['city']['names']['en'])) {
-            $value = $data['city']['names']['en'];
+        $lng = \Yii::$app->language;
+        if (isset($data['city']['names'][$lng])) {
+            return $data['city']['names'][$lng];
         }
 
-        return $value;
+        if (isset($data['city']['names']['en'])) {
+            return $data['city']['names']['en'];
+        }
+
+        return null;
     }
 
     protected function getCountry($data) {
-        $value = null;
+        $lng = \Yii::$app->language;
 
-        if (isset($data['country']['names']['en'])) {
-            $value = $data['country']['names']['en'];
+        if (isset($data['country']['names'][$lng])) {
+            return $data['country']['names'][$lng];
         }
 
-        return $value;
+        if (isset($data['country']['names']['en'])) {
+            return $data['country']['names']['en'];
+        }
+
+        return null;
     }
 
     protected function getLocation($data) {
